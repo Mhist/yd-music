@@ -68,3 +68,50 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## 项目规范
+
+- 文件夹：文件夹名称统一小写，多个单词以连接符(-)连接
+- JavaScript 变量名称采用小驼峰标识、常量全部使用大写字母，组件采用大驼峰
+- css 采用普通 css 和 styled-component 结合来编写
+- 整个项目不再使用 class 组件，统一使用函数式组件，全面拥抱 hooks
+- 所有的函数式组件，为了避免不必要的渲染，全部使用 memo 进行包裹
+- 所有内部的状态，使用 useState useReaducer;业务数据全部放在 redux 中管理
+- 函数组件内部按照如下顺序编写代码：
+  (1),组件内部 state 管理
+  (2),redux 的 hooks 代码
+  (3),其他组件的 hooks 代码
+  (4),其他逻辑代码
+  (5),返回的 jsx 代码
+
+- redux 代码规范如下：
+  (1),每个模块有自己独立的 reducer，通过 combineReducer 进行合并
+  (2),异步请求代码使用 redux-thunk,并且写在 actionCreator 中
+  (3),redux 直接采用 redux hooks 方式编写,不再使用 connect
+
+- 网络请求采用 axios
+  (1),对 axios 进行二次封装
+  (2),所有的模块请求会放到一个请求文件中单独管理
+
+- 项目使用 AntDesign
+  (1),项目中某些 AntDesign 组件会被拿过来使用
+  (2),但是大部分组件还是自己编写
+
+## 样式初始化
+
+```
+npm install normalize.css
+```
+
+https://necolas.github.io/normalize.css/
+
+## 配置别名
+
+```
+npm install @craco/craco --save
+```
+
+## 集中式路由
+
+- [升 react-router v6 后，react-router-config 不能用了？——react-router v6 实现集中式路由](https://juejin.cn/post/7052933770260938783)
+- [错误：useRoutes() 只能在 <Router> 组件的上下文中使用，即使应用程序包裹在 BrowserRouter 周围(Error: useRoutes() may be used only in the context of a <Router> component even if the app is wrapped around BrowserRouter)](https://www.likecs.com/ask-186064.html)
