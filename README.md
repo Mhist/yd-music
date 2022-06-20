@@ -115,3 +115,20 @@ npm install @craco/craco --save
 
 - [升 react-router v6 后，react-router-config 不能用了？——react-router v6 实现集中式路由](https://juejin.cn/post/7052933770260938783)
 - [错误：useRoutes() 只能在 <Router> 组件的上下文中使用，即使应用程序包裹在 BrowserRouter 周围(Error: useRoutes() may be used only in the context of a <Router> component even if the app is wrapped around BrowserRouter)](https://www.likecs.com/ask-186064.html)
+
+## nginx 部署
+
+- 打包前端代码，并且上传服务器，并且由 nginx 进行驱动。
+- 1.在服务器端安装 nginx，并且修改 conf 文件，以宝塔 centos 7 面板为例，![nginx文件位置](https://fastly.jsdelivr.net/gh/mhist/hexoImage@main/img/20220620203335.png)
+  分别为配置文件存放位置和启动位置存放位置
+- 2.查看上传的前端编译打包后的代码，并且编辑 nginx 配置文件
+  ![前端代码位置](https://fastly.jsdelivr.net/gh/mhist/hexoImage@main/img/20220620203741.png)
+
+- ![nginx配置文件上](https://fastly.jsdelivr.net/gh/mhist/hexoImage@main/img/20220620204353nginx1.png)
+
+- ![nginx配置文件下](https://fastly.jsdelivr.net/gh/mhist/hexoImage@main/img/20220620204443nginx2.png)
+
+由上图，指定 80 端口，当然在运行过程中是需要在设置中放行 80 端口的。
+![80端口](https://fastly.jsdelivr.net/gh/mhist/hexoImage@main/img/20220620204638-80port.png)
+
+最后在 ![启动](https://files.catbox.moe/yfb0eo.png)
